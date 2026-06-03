@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Matías Hughes | Technology Consultant</title>
+
+  <style>
+    :root {
+      --bg: #0b1020;
+      --bg-soft: #111936;
+      --card: #151f3d;
+      --primary: #4f8cff;
+      --primary-soft: rgba(79, 140, 255, 0.15);
+      --text: #f4f7fb;
+      --muted: #aeb8d0;
+      --border: rgba(255, 255, 255, 0.1);
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Inter, Arial, sans-serif;
+      background: linear-gradient(180deg, #0b1020 0%, #101735 100%);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 92%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      backdrop-filter: blur(16px);
+      background: rgba(11, 16, 32, 0.8);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav {
+      height: 76px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+    }
+
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 26px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--white);
+    }
+
+    .hero {
+      padding: 110px 0 90px;
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .badge {
+      display: inline-flex;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--primary-soft);
+      color: #9fc0ff;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 {
+      font-size: clamp(2.5rem, 6vw, 4.8rem);
+      line-height: 1.05;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+    }
+
+    .hero h1 span {
+      color: var(--primary);
+    }
+
+    .hero p {
+      color: var(--muted);
+      font-size: 1.15rem;
+      max-width: 680px;
+      margin-bottom: 34px;
+    }
+
+    .actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 14px 22px;
+      border-radius: 12px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .btn-primary {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--border);
+      color: var(--text);
+      background: rgba(255,255,255,0.04);
+    }
+
+    .hero-card {
+      background: radial-gradient(circle at top right, rgba(79,140,255,.35), transparent 35%),
+                  var(--card);
+      border: 1px solid var(--border);
+      border-radius: 28px;
+      padding: 32px;
+      box-shadow: 0 30px 80px rgba(0,0,0,.28);
+    }
+
+    .hero-card h3 {
+      font-size: 1.3rem;
+      margin-bottom: 22px;
+    }
+
+    .metric {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .metric:last-child {
+      border-bottom: none;
+    }
+
+    .metric strong {
+      display: block;
+      font-size: 1.8rem;
+      color: white;
+    }
+
+    .metric span {
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    section {
+      padding: 86px 0;
+    }
+
+    .section-title {
+      max-width: 760px;
+      margin-bottom: 42px;
+    }
+
+    .section-title h2 {
+      font-size: 2.3rem;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .card {
+      background: rgba(255,255,255,0.045);
+      border: 1px solid var(--border);
+      border-radius: 22px;
+      padding: 26px;
+      transition: 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(79,140,255,.5);
+    }
+
+    .card .icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--primary-soft);
+      color: var(--primary);
+      display: grid;
+      place-items: center;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .split {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: 40px;
+      align-items: start;
+    }
+
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .skill {
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .project {
+      padding: 26px;
+      border-radius: 22px;
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      margin-bottom: 18px;
+    }
+
+    .project h3 {
+      margin-bottom: 8px;
+    }
+
+    .project p {
+      color: var(--muted);
+    }
+
+    .cta {
+      text-align: center;
+      background: linear-gradient(135deg, rgba(79,140,255,.25), rgba(255,255,255,.04));
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      padding: 60px 30px;
+    }
+
+    .cta h2 {
+      font-size: 2.4rem;
+      margin-bottom: 14px;
+    }
+
+    .cta p {
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    footer {
+      padding: 38px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      text-align: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero,
+      .split {
+        grid-template-columns: 1fr;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="container nav">
+      <div class="logo">Matías <span>Hughes</span></div>
+      <nav class="nav-links">
+        <a href="#servicios">Servicios</a>
+        <a href="#skills">Skills</a>
+        <a href="#experiencia">Experiencia</a>
+        <a href="#contacto">Contacto</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="container hero">
+      <div>
+        <div class="badge">Consultoría tecnológica · Backend · Cloud · Automatización</div>
+        <h1>Construyo soluciones digitales para escalar procesos y productos.</h1>
+        <p>
+          Ayudo a empresas y equipos técnicos a diseñar, desarrollar y poner en producción
+          APIs, plataformas internas, automatizaciones, integraciones cloud y aplicaciones web.
+        </p>
+
+        <div class="actions">
+          <a class="btn btn-primary" href="#contacto">Hablemos de tu proyecto</a>
+          <a class="btn btn-secondary" href="#experiencia">Ver experiencia</a>
+        </div>
+      </div>
+
+      <div class="hero-card">
+        <h3>Perfil profesional</h3>
+
+        <div class="metric">
+          <strong>Backend</strong>
+          <span>Node.js, TypeScript, Express, APIs REST</span>
+        </div>
+
+        <div class="metric">
+          <strong>Cloud</strong>
+          <span>AWS, Docker, CI/CD, NGINX, S3, SQS</span>
+        </div>
+
+        <div class="metric">
+          <strong>Fullstack</strong>
+          <span>React, Next.js, Vue.js, Material UI</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="servicios" class="container">
+      <div class="section-title">
+        <h2>Servicios de consultoría</h2>
+        <p>
+          Soluciones técnicas orientadas a negocio, desde la idea inicial hasta el despliegue productivo.
+        </p>
+      </div>
+
+      <div class="grid">
+        <div class="card">
+          <div class="icon">01</div>
+          <h3>Desarrollo de APIs</h3>
+          <p>Diseño y construcción de APIs robustas, integraciones, autenticación, validaciones y servicios backend.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">02</div>
+          <h3>Aplicaciones web</h3>
+          <p>Backoffices, paneles administrativos y plataformas web modernas con React, Next.js o Vue.js.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">03</div>
+          <h3>Cloud & DevOps</h3>
+          <p>Infraestructura en AWS, Docker, CI/CD, dominios, certificados, despliegues y automatización.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">04</div>
+          <h3>Automatización</h3>
+          <p>Automatización de procesos internos, webhooks, jobs, alertas, reportes e integraciones entre sistemas.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">05</div>
+          <h3>Arquitectura técnica</h3>
+          <p>Definición de stack, ambientes, flujos, seguridad, escalabilidad y estrategia de implementación.</p>
+        </div>
+
+        <div class="card">
+          <div class="icon">06</div>
+          <h3>Modernización</h3>
+          <p>Migración de aplicaciones, mejoras de performance, actualización tecnológica y reducción de deuda técnica.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="skills" class="container">
+      <div class="split">
+        <div class="section-title">
+          <h2>Skills técnicos</h2>
+          <p>
+            Trabajo combinando desarrollo, infraestructura e integración para entregar soluciones completas.
+          </p>
+        </div>
+
+        <div class="skills">
+          <span class="skill">Node.js</span>
+          <span class="skill">TypeScript</span>
+          <span class="skill">Express</span>
+          <span class="skill">React</span>
+          <span class="skill">Next.js</span>
+          <span class="skill">Vue.js</span>
+          <span class="skill">AWS</span>
+          <span class="skill">Docker</span>
+          <span class="skill">GitHub Actions</span>
+          <span class="skill">S3</span>
+          <span class="skill">SQS</span>
+          <span class="skill">SES</span>
+          <span class="skill">Redis</span>
+          <span class="skill">MySQL</span>
+          <span class="skill">PostgreSQL</span>
+          <span class="skill">MongoDB</span>
+          <span class="skill">NGINX</span>
+          <span class="skill">Port.io</span>
+          <span class="skill">n8n</span>
+          <span class="skill">Webhooks</span>
+        </div>
+      </div>
+    </section>
+
+    <section id="experiencia" class="container">
+      <div class="section-title">
+        <h2>Experiencia destacada</h2>
+        <p>
+          Algunos tipos de proyectos y soluciones en los que vengo trabajando.
+        </p>
+      </div>
+
+      <div class="project">
+        <h3>Plataformas internas y APIs empresariales</h3>
+        <p>
+          Desarrollo de servicios backend, herramientas internas, sistemas de permisos,
+          APIs de integración y aplicaciones utilizadas por equipos técnicos y operativos.
+        </p>
+      </div>
+
+      <div class="project">
+        <h3>Automatización de procesos técnicos</h3>
+        <p>
+          Implementación de flujos para seguimiento de estándares, campañas técnicas,
+          scorecards, alertas, reportes e integración con herramientas como Port.io y Google Sheets.
+        </p>
+      </div>
+
+      <div class="project">
+        <h3>Infraestructura cloud y despliegues</h3>
+        <p>
+          Armado de ambientes productivos con AWS, Docker, GitHub Actions, CloudFront,
+          S3, SQS, Redis, NGINX, dominios y certificados.
+        </p>
+      </div>
+
+      <div class="project">
+        <h3>Aplicaciones fullstack</h3>
+        <p>
+          Construcción de productos web completos: frontend, backend, base de datos,
+          autenticación, almacenamiento de archivos, integraciones y puesta en producción.
+        </p>
+      </div>
+    </section>
+
+    <section id="contacto" class="container">
+      <div class="cta">
+        <h2>¿Querés construir o mejorar una solución digital?</h2>
+        <p>
+          Puedo ayudarte a definir la arquitectura, desarrollar el producto,
+          automatizar procesos o llevar tu aplicación a producción.
+        </p>
+
+        <div class="actions" style="justify-content:center;">
+          <a class="btn btn-primary" href="mailto:hughesmatias@gmail.com">Enviar email</a>
+          <a class="btn btn-secondary" href="#">LinkedIn</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 Matías Hughes · Technology Consultant
+  </footer>
+
+</body>
+</html>
