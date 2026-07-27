@@ -3,18 +3,29 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Consultoría tecnológica especializada en desarrollo de software, automatización con IA, bots, integraciones y soluciones cloud." />
+  <title>Matías Hughes | Software, AI & Automation</title>
 
   <style>
     :root {
-      --bg: #0b1020;
-      --bg-soft: #111936;
-      --card: #151f3d;
-      --primary: #4f8cff;
-      --primary-soft: rgba(79, 140, 255, 0.15);
-      --text: #f4f7fb;
-      --muted: #aeb8d0;
+      --bg: #07101f;
+      --bg-deep: #030812;
+      --surface: #0d1830;
+      --surface-2: #101e3b;
+      --surface-soft: rgba(255, 255, 255, 0.045);
+      --primary: #4b7dff;
+      --primary-2: #6b4eff;
+      --accent: #5fd7ff;
+      --green: #66d28a;
+      --text: #f7f9ff;
+      --muted: #9da9c2;
       --border: rgba(255, 255, 255, 0.1);
-      --white: #ffffff;
+      --border-strong: rgba(75, 125, 255, 0.45);
+      --shadow: 0 28px 90px rgba(0, 0, 0, 0.35);
+      --radius-lg: 28px;
+      --radius-md: 20px;
+      --radius-sm: 13px;
+      --container: 1180px;
     }
 
     * {
@@ -23,11 +34,19 @@
       padding: 0;
     }
 
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: Inter, Arial, sans-serif;
-      background: linear-gradient(180deg, #0b1020 0%, #101735 100%);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background:
+        radial-gradient(circle at 85% 10%, rgba(54, 97, 255, 0.16), transparent 22%),
+        radial-gradient(circle at 10% 45%, rgba(58, 129, 255, 0.08), transparent 26%),
+        linear-gradient(180deg, var(--bg-deep) 0%, var(--bg) 42%, #081325 100%);
       color: var(--text);
       line-height: 1.6;
+      overflow-x: hidden;
     }
 
     a {
@@ -35,17 +54,118 @@
       text-decoration: none;
     }
 
-    .container {
-      width: min(1120px, 92%);
-      margin: auto;
+    button,
+    input,
+    textarea {
+      font: inherit;
     }
 
+    .container {
+      width: min(var(--container), 92%);
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: 14px;
+      color: #77a1ff;
+      font-size: 0.78rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
+    .section-heading {
+      max-width: 760px;
+      margin-bottom: 42px;
+    }
+
+    .section-heading.center {
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+    }
+
+    .section-heading h2 {
+      font-size: clamp(2rem, 4vw, 3.25rem);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      margin-bottom: 16px;
+    }
+
+    .section-heading p {
+      color: var(--muted);
+      font-size: 1.06rem;
+    }
+
+    .section {
+      padding: 96px 0;
+      position: relative;
+    }
+
+    .section.alt {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: rgba(255, 255, 255, 0.015);
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 26px;
+      box-shadow: 0 14px 40px rgba(0,0,0,0.12);
+      transition: transform .25s ease, border-color .25s ease, background .25s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      border-color: var(--border-strong);
+      background: linear-gradient(180deg, rgba(75,125,255,0.11), rgba(255,255,255,0.03));
+    }
+
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: rgba(75,125,255,0.12);
+      border: 1px solid rgba(75,125,255,0.3);
+      color: #75a0ff;
+      font-weight: 900;
+      margin-bottom: 18px;
+    }
+
+    .card h3 {
+      font-size: 1.16rem;
+      margin-bottom: 10px;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    /* Header */
     header {
       position: sticky;
       top: 0;
-      z-index: 10;
+      z-index: 50;
+      background: rgba(3, 8, 18, 0.78);
       backdrop-filter: blur(16px);
-      background: rgba(11, 16, 32, 0.8);
       border-bottom: 1px solid var(--border);
     }
 
@@ -54,476 +174,1141 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 30px;
     }
 
-    .logo {
-      font-size: 1.2rem;
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
       font-weight: 800;
-      letter-spacing: -0.5px;
+      letter-spacing: -0.02em;
     }
 
-    .logo span {
-      color: var(--primary);
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      box-shadow: 0 10px 30px rgba(75,125,255,0.35);
+      font-size: 0.88rem;
+    }
+
+    .brand span {
+      color: #7aa2ff;
     }
 
     .nav-links {
       display: flex;
-      gap: 26px;
+      align-items: center;
+      gap: 24px;
       color: var(--muted);
-      font-size: 0.95rem;
+      font-size: 0.94rem;
     }
 
     .nav-links a:hover {
-      color: var(--white);
+      color: var(--text);
     }
 
+    .nav-cta {
+      padding: 11px 17px;
+      border-radius: 11px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: white;
+      font-weight: 800;
+      box-shadow: 0 10px 30px rgba(75,125,255,0.25);
+    }
+
+    /* Hero */
     .hero {
-      padding: 110px 0 90px;
+      min-height: calc(100vh - 76px);
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 60px;
+      grid-template-columns: 1.08fr .92fr;
+      gap: 58px;
       align-items: center;
+      padding: 92px 0 82px;
     }
 
-    .badge {
-      display: inline-flex;
-      padding: 8px 14px;
-      border-radius: 999px;
-      background: var(--primary-soft);
-      color: #9fc0ff;
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin-bottom: 24px;
+    .hero-copy h1 {
+      font-size: clamp(3rem, 6vw, 5.8rem);
+      line-height: .98;
+      letter-spacing: -0.062em;
+      max-width: 780px;
+      margin-bottom: 26px;
     }
 
-    .hero h1 {
-      font-size: clamp(2.5rem, 6vw, 4.8rem);
-      line-height: 1.05;
-      letter-spacing: -2px;
-      margin-bottom: 24px;
+    .hero-copy h1 .gradient {
+      background: linear-gradient(90deg, #ffffff 10%, #7ba8ff 55%, #6d4cff 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
-    .hero h1 span {
-      color: var(--primary);
-    }
-
-    .hero p {
-      color: var(--muted);
-      font-size: 1.15rem;
+    .hero-copy p {
       max-width: 680px;
+      color: var(--muted);
+      font-size: 1.18rem;
       margin-bottom: 34px;
     }
 
-    .actions {
+    .hero-actions {
       display: flex;
-      gap: 16px;
       flex-wrap: wrap;
+      gap: 14px;
+      margin-bottom: 38px;
     }
 
     .btn {
-      padding: 14px 22px;
+      min-height: 50px;
+      padding: 0 21px;
       border-radius: 12px;
-      font-weight: 700;
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      gap: 10px;
+      font-weight: 800;
+      border: 1px solid transparent;
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
     }
 
     .btn-primary {
-      background: var(--primary);
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
       color: white;
+      box-shadow: 0 16px 38px rgba(75,125,255,.28);
     }
 
     .btn-secondary {
-      border: 1px solid var(--border);
-      color: var(--text);
-      background: rgba(255,255,255,0.04);
+      border-color: var(--border);
+      background: rgba(255,255,255,.035);
     }
 
-    .hero-card {
-      background: radial-gradient(circle at top right, rgba(79,140,255,.35), transparent 35%),
-                  var(--card);
-      border: 1px solid var(--border);
-      border-radius: 28px;
-      padding: 32px;
-      box-shadow: 0 30px 80px rgba(0,0,0,.28);
-    }
-
-    .hero-card h3 {
-      font-size: 1.3rem;
-      margin-bottom: 22px;
-    }
-
-    .metric {
-      padding: 18px 0;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .metric:last-child {
-      border-bottom: none;
-    }
-
-    .metric strong {
-      display: block;
-      font-size: 1.8rem;
-      color: white;
-    }
-
-    .metric span {
-      color: var(--muted);
-      font-size: 0.95rem;
-    }
-
-    section {
-      padding: 86px 0;
-    }
-
-    .section-title {
-      max-width: 760px;
-      margin-bottom: 42px;
-    }
-
-    .section-title h2 {
-      font-size: 2.3rem;
-      letter-spacing: -1px;
-      margin-bottom: 12px;
-    }
-
-    .section-title p {
-      color: var(--muted);
-      font-size: 1.05rem;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 22px;
-    }
-
-    .card {
-      background: rgba(255,255,255,0.045);
-      border: 1px solid var(--border);
-      border-radius: 22px;
-      padding: 26px;
-      transition: 0.2s ease;
-    }
-
-    .card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(79,140,255,.5);
-    }
-
-    .card .icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      background: var(--primary-soft);
-      color: var(--primary);
-      display: grid;
-      place-items: center;
-      font-weight: 900;
-      margin-bottom: 18px;
-    }
-
-    .card h3 {
-      margin-bottom: 10px;
-      font-size: 1.15rem;
-    }
-
-    .card p {
-      color: var(--muted);
-      font-size: 0.96rem;
-    }
-
-    .split {
-      display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 40px;
-      align-items: start;
-    }
-
-    .skills {
+    .trust-row {
       display: flex;
       flex-wrap: wrap;
-      gap: 12px;
+      align-items: center;
+      gap: 14px;
+      color: #8090ac;
+      font-size: .88rem;
     }
 
-    .skill {
-      padding: 10px 14px;
+    .trust-item {
+      padding: 8px 12px;
+      border: 1px solid var(--border);
       border-radius: 999px;
-      background: rgba(255,255,255,.06);
-      border: 1px solid var(--border);
-      color: var(--muted);
-      font-size: 0.95rem;
+      background: rgba(255,255,255,.025);
     }
 
-    .project {
-      padding: 26px;
-      border-radius: 22px;
+    .hero-panel {
+      position: relative;
+      min-height: 540px;
+      border: 1px solid var(--border-strong);
+      border-radius: 30px;
+      padding: 24px;
+      background:
+        radial-gradient(circle at top right, rgba(83,98,255,.22), transparent 33%),
+        linear-gradient(180deg, rgba(16,30,59,.98), rgba(8,18,36,.98));
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .hero-panel::before {
+      content: "";
+      position: absolute;
+      inset: auto -80px -100px auto;
+      width: 320px;
+      height: 320px;
+      background: radial-gradient(circle, rgba(67,108,255,.24), transparent 70%);
+      border-radius: 50%;
+    }
+
+    .panel-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .status {
+      display: inline-flex;
+      gap: 8px;
+      align-items: center;
+      color: #9fd3b0;
+      font-size: .86rem;
+      font-weight: 700;
+    }
+
+    .status-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 6px rgba(102,210,138,.08);
+    }
+
+    .workflow {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 74px 1fr;
+      gap: 12px;
+      align-items: center;
+      margin: 18px 0;
+    }
+
+    .flow-card {
+      min-height: 108px;
       border: 1px solid var(--border);
-      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      border-radius: 16px;
+      background: rgba(255,255,255,.035);
+      padding: 18px;
+    }
+
+    .flow-card strong {
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .flow-card span {
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    .flow-line {
+      height: 2px;
+      background: linear-gradient(90deg, rgba(75,125,255,.2), rgba(75,125,255,.95));
+      position: relative;
+    }
+
+    .flow-line::after {
+      content: "›";
+      position: absolute;
+      right: -2px;
+      top: 50%;
+      transform: translateY(-57%);
+      color: #7ba0ff;
+      font-size: 1.6rem;
+    }
+
+    .channels {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-top: 22px;
+    }
+
+    .channel {
+      padding: 16px 12px;
+      text-align: center;
+      border-radius: 14px;
+      background: rgba(255,255,255,.035);
+      border: 1px solid var(--border);
+      color: #d9e2f4;
+      font-size: .9rem;
+    }
+
+    .ai-core {
+      margin: 24px auto;
+      width: 145px;
+      height: 145px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 35% 30%, rgba(255,255,255,.26), transparent 18%),
+        linear-gradient(135deg, #4d7cff, #6846ff);
+      box-shadow:
+        0 0 0 18px rgba(75,125,255,.06),
+        0 0 0 38px rgba(75,125,255,.03),
+        0 22px 60px rgba(70,77,255,.36);
+      font-size: 2rem;
+      font-weight: 900;
+      letter-spacing: -0.06em;
+    }
+
+    /* Clients */
+    .clients-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .client-card {
+      min-height: 210px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      background:
+        radial-gradient(circle at top right, rgba(75,125,255,.08), transparent 30%),
+        linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.022));
+    }
+
+    .client-logo {
+      font-size: 1.55rem;
+      font-weight: 900;
+      letter-spacing: -0.03em;
+      margin-bottom: 16px;
+    }
+
+    .client-card p {
+      color: var(--muted);
+    }
+
+    .client-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 20px;
+    }
+
+    .tag {
+      padding: 7px 10px;
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.03);
+      color: #b7c2d8;
+      font-size: .78rem;
+    }
+
+    /* Services */
+    .service-card {
+      min-height: 235px;
+    }
+
+    /* AI automation */
+    .ai-layout {
+      display: grid;
+      grid-template-columns: 1.02fr .98fr;
+      gap: 26px;
+      align-items: stretch;
+    }
+
+    .ai-main {
+      padding: 34px;
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--border-strong);
+      background:
+        radial-gradient(circle at 75% 15%, rgba(82,98,255,.2), transparent 25%),
+        linear-gradient(180deg, rgba(16,30,59,.92), rgba(8,18,36,.92));
+      box-shadow: var(--shadow);
+    }
+
+    .ai-main h3 {
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      letter-spacing: -0.04em;
+      line-height: 1.08;
       margin-bottom: 18px;
     }
 
-    .project h3 {
-      margin-bottom: 8px;
-    }
-
-    .project p {
-      color: var(--muted);
-    }
-
-    .cta {
-      text-align: center;
-      background: linear-gradient(135deg, rgba(79,140,255,.25), rgba(255,255,255,.04));
-      border: 1px solid var(--border);
-      border-radius: 32px;
-      padding: 60px 30px;
-    }
-
-    .cta h2 {
-      font-size: 2.4rem;
-      margin-bottom: 14px;
-    }
-
-    .cta p {
+    .ai-main > p {
       color: var(--muted);
       margin-bottom: 28px;
     }
 
-    footer {
-      padding: 38px 0;
-      border-top: 1px solid var(--border);
-      color: var(--muted);
-      text-align: center;
+    .ai-capabilities {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 12px;
     }
 
-    @media (max-width: 900px) {
+    .capability {
+      padding: 14px 16px;
+      border-radius: 13px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.035);
+      color: #dfe7f7;
+      font-size: .92rem;
+    }
+
+    .integration-map {
+      display: grid;
+      gap: 14px;
+    }
+
+    .integration-card {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 15px;
+      align-items: center;
+      padding: 18px;
+      border-radius: 16px;
+      border: 1px solid var(--border);
+      background: rgba(255,255,255,.035);
+    }
+
+    .integration-card .mini-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 13px;
+      display: grid;
+      place-items: center;
+      background: rgba(75,125,255,.11);
+      color: #77a0ff;
+      font-weight: 900;
+    }
+
+    .integration-card strong {
+      display: block;
+      margin-bottom: 3px;
+    }
+
+    .integration-card span {
+      color: var(--muted);
+      font-size: .88rem;
+    }
+
+    /* Tech */
+    .tech-groups {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .tech-group h3 {
+      font-size: 1rem;
+      margin-bottom: 16px;
+      color: #dfe7f8;
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Case studies */
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 22px;
+    }
+
+    .case-card {
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .case-image {
+      height: 190px;
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 75% 20%, rgba(90,122,255,.35), transparent 30%),
+        linear-gradient(135deg, #142a59, #081224);
+    }
+
+    .case-image.agro {
+      background:
+        linear-gradient(rgba(5,12,20,.2), rgba(5,12,20,.55)),
+        repeating-linear-gradient(100deg, #17351f 0 18px, #294b2d 18px 36px);
+    }
+
+    .case-image.event {
+      background:
+        radial-gradient(circle at 25% 55%, rgba(255,0,132,.45), transparent 20%),
+        radial-gradient(circle at 65% 30%, rgba(43,103,255,.52), transparent 24%),
+        linear-gradient(135deg, #160c2b, #071225);
+    }
+
+    .case-image.ai {
+      background:
+        radial-gradient(circle at 45% 45%, rgba(76,111,255,.45), transparent 18%),
+        radial-gradient(circle at 65% 55%, rgba(0,220,170,.25), transparent 18%),
+        linear-gradient(135deg, #111e3f, #08101e);
+    }
+
+    .case-image::after {
+      content: "";
+      position: absolute;
+      inset: 20px;
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,.16);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.08), rgba(255,255,255,.02));
+      box-shadow: inset 0 0 40px rgba(255,255,255,.025);
+    }
+
+    .case-body {
+      padding: 24px;
+    }
+
+    .case-body h3 {
+      font-size: 1.25rem;
+      margin-bottom: 9px;
+    }
+
+    .case-body p {
+      min-height: 76px;
+      color: var(--muted);
+      margin-bottom: 18px;
+    }
+
+    .case-link {
+      color: #79a0ff;
+      font-weight: 800;
+      font-size: .9rem;
+    }
+
+    /* Process */
+    .process {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 16px;
+      counter-reset: step;
+    }
+
+    .process-step {
+      position: relative;
+      min-height: 200px;
+    }
+
+    .process-step::before {
+      counter-increment: step;
+      content: "0" counter(step);
+      display: block;
+      margin-bottom: 28px;
+      color: #6f96ef;
+      font-size: .8rem;
+      font-weight: 900;
+      letter-spacing: .15em;
+    }
+
+    /* CTA */
+    .cta {
+      padding: 54px;
+      border-radius: 30px;
+      border: 1px solid var(--border-strong);
+      background:
+        radial-gradient(circle at 15% 50%, rgba(88,58,255,.22), transparent 30%),
+        linear-gradient(135deg, rgba(48,42,131,.8), rgba(15,29,57,.9));
+      box-shadow: var(--shadow);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .cta h2 {
+      font-size: clamp(2rem, 4vw, 3.5rem);
+      line-height: 1.05;
+      letter-spacing: -0.045em;
+      max-width: 690px;
+      margin-bottom: 14px;
+    }
+
+    .cta p {
+      color: #b4c0d5;
+      max-width: 650px;
+    }
+
+    /* Footer */
+    footer {
+      padding: 44px 0;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.4fr .8fr .8fr;
+      gap: 36px;
+      margin-bottom: 34px;
+    }
+
+    .footer-links {
+      display: grid;
+      gap: 9px;
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      font-size: .88rem;
+    }
+
+    @media (max-width: 980px) {
       .hero,
-      .split {
+      .ai-layout {
         grid-template-columns: 1fr;
       }
 
-      .grid {
-        grid-template-columns: 1fr;
+      .hero {
+        min-height: auto;
+      }
+
+      .grid-4,
+      .process {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .grid-3,
+      .clients-grid,
+      .case-grid,
+      .tech-groups {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
       .nav-links {
         display: none;
       }
+
+      .cta {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .section {
+        padding: 72px 0;
+      }
+
+      .hero {
+        padding-top: 68px;
+      }
+
+      .hero-copy h1 {
+        font-size: clamp(2.8rem, 15vw, 4.4rem);
+      }
+
+      .grid-4,
+      .grid-3,
+      .clients-grid,
+      .case-grid,
+      .tech-groups,
+      .process,
+      .ai-capabilities {
+        grid-template-columns: 1fr;
+      }
+
+      .workflow {
+        grid-template-columns: 1fr;
+      }
+
+      .flow-line {
+        width: 2px;
+        height: 34px;
+        margin: auto;
+        background: linear-gradient(180deg, rgba(75,125,255,.2), rgba(75,125,255,.95));
+      }
+
+      .flow-line::after {
+        right: auto;
+        left: 50%;
+        top: auto;
+        bottom: -11px;
+        transform: translateX(-50%) rotate(90deg);
+      }
+
+      .channels {
+        grid-template-columns: 1fr;
+      }
+
+      .cta {
+        padding: 34px 24px;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+      }
     }
   </style>
-
-  <title>Matias Hughes | Desarrollo de Software, Cloud y Consultoría IT</title>
-
-  <meta name="description"
-    content="Consultoría IT, desarrollo de software, cloud, AWS, automatización, DevOps y aplicaciones web en Argentina." />
-
-  <meta name="keywords"
-    content="desarrollo software, AWS, cloud, devops, nodejs, react, consultoría IT, La Plata" />
-
-  <meta name="author" content="Matias Hughes" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <meta property="og:title" content="Matias Hughes - Consultoría IT" />
-  <meta property="og:description" content="Desarrollo, cloud, automatización y consultoría." />
-  <meta property="og:type" content="website" />
 </head>
 
 <body>
-
   <header>
     <div class="container nav">
-      <div class="logo">Matías <span>Hughes</span></div>
-      <nav class="nav-links">
+      <a href="#inicio" class="brand">
+        <div class="brand-mark">MH</div>
+        <div>Matías <span>Hughes</span></div>
+      </a>
+
+      <nav class="nav-links" aria-label="Navegación principal">
+        <a href="#clientes">Clientes</a>
         <a href="#servicios">Servicios</a>
-        <a href="#skills">Skills</a>
-        <a href="#experiencia">Experiencia</a>
-        <a href="#contacto">Contacto</a>
+        <a href="#automatizacion">AI Automation</a>
+        <a href="#casos">Case Studies</a>
+        <a href="#tecnologias">Tecnologías</a>
       </nav>
+
+      <a class="nav-cta" href="#contacto">Hablemos</a>
     </div>
   </header>
 
   <main>
+    <section id="inicio" class="container hero">
+      <div class="hero-copy">
+        <span class="eyebrow">Software Engineering · Cloud · Digital Products</span>
 
-    <section class="container hero">
-      <div>
-        <div class="badge">Consultoría tecnológica · Backend · Cloud · Automatización</div>
-        <h1>Construyo soluciones digitales para escalar procesos y productos.</h1>
+        <h1>
+          Construimos soluciones digitales que
+          <span class="gradient">impulsan negocios y productos.</span>
+        </h1>
+
         <p>
-          Ayudo a empresas y equipos técnicos a diseñar, desarrollar y poner en producción
-          APIs, plataformas internas, automatizaciones, integraciones cloud y aplicaciones web.
+          Diseñamos y desarrollamos plataformas, APIs, aplicaciones web, infraestructura cloud
+          y soluciones a medida para empresas que necesitan productos sólidos, escalables
+          y preparados para crecer.
         </p>
 
-        <div class="actions">
-          <a class="btn btn-primary" href="#contacto">Hablemos de tu proyecto</a>
-          <a class="btn btn-secondary" href="#experiencia">Ver experiencia</a>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contacto">Hablemos de tu proyecto →</a>
+          <a class="btn btn-secondary" href="#casos">Ver proyectos</a>
+        </div>
+
+        <div class="trust-row">
+          <span>Especialidades:</span>
+          <span class="trust-item">Backend</span>
+          <span class="trust-item">Cloud</span>
+          <span class="trust-item">Integraciones</span>
+          <span class="trust-item">Automatización</span>
         </div>
       </div>
 
-      <div class="hero-card">
-        <h3>Perfil profesional</h3>
-
-        <div class="metric">
-          <strong>Backend</strong>
-          <span>Node.js, TypeScript, Express, APIs REST</span>
+      <div class="hero-panel">
+        <div class="panel-top">
+          <strong>Perfil profesional</strong>
+          <span class="status"><span class="status-dot"></span> Disponible para proyectos</span>
         </div>
 
-        <div class="metric">
-          <strong>Cloud</strong>
-          <span>AWS, Docker, CI/CD, NGINX, S3, SQS</span>
+        <div class="workflow">
+          <div class="flow-card">
+            <strong>Backend & APIs</strong>
+            <span>Node.js, Go, TypeScript, arquitectura y servicios escalables.</span>
+          </div>
+
+          <div class="flow-line"></div>
+
+          <div class="flow-card">
+            <strong>Productos digitales</strong>
+            <span>Aplicaciones web, backoffices, plataformas y experiencias digitales.</span>
+          </div>
         </div>
 
-        <div class="metric">
-          <strong>Fullstack</strong>
-          <span>React, Next.js, Vue.js, Material UI</span>
+        <div class="workflow">
+          <div class="flow-card">
+            <strong>Cloud & DevOps</strong>
+            <span>AWS, Docker, CI/CD, NGINX, observabilidad y despliegues productivos.</span>
+          </div>
+
+          <div class="flow-line"></div>
+
+          <div class="flow-card">
+            <strong>Integraciones</strong>
+            <span>APIs, webhooks, pagos, mensajería, automatización y sistemas externos.</span>
+          </div>
+        </div>
+
+        <div class="channels">
+          <div class="channel">Software</div>
+          <div class="channel">Cloud</div>
+          <div class="channel">Automation</div>
         </div>
       </div>
     </section>
 
-    <section id="servicios" class="container">
-      <div class="section-title">
-        <h2>Servicios de consultoría</h2>
-        <p>
-          Soluciones técnicas orientadas a negocio, desde la idea inicial hasta el despliegue productivo.
-        </p>
-      </div>
-
-      <div class="grid">
-        <div class="card">
-          <div class="icon">01</div>
-          <h3>Desarrollo de APIs</h3>
-          <p>Diseño y construcción de APIs robustas, integraciones, autenticación, validaciones y servicios backend.</p>
-        </div>
-
-        <div class="card">
-          <div class="icon">02</div>
-          <h3>Aplicaciones web</h3>
-          <p>Backoffices, paneles administrativos y plataformas web modernas con React, Next.js o Vue.js.</p>
-        </div>
-
-        <div class="card">
-          <div class="icon">03</div>
-          <h3>Cloud & DevOps</h3>
-          <p>Infraestructura en AWS, Docker, CI/CD, dominios, certificados, despliegues y automatización.</p>
-        </div>
-
-        <div class="card">
-          <div class="icon">04</div>
-          <h3>Automatización</h3>
-          <p>Automatización de procesos internos, webhooks, jobs, alertas, reportes e integraciones entre sistemas.</p>
-        </div>
-
-        <div class="card">
-          <div class="icon">05</div>
-          <h3>Arquitectura técnica</h3>
-          <p>Definición de stack, ambientes, flujos, seguridad, escalabilidad y estrategia de implementación.</p>
-        </div>
-
-        <div class="card">
-          <div class="icon">06</div>
-          <h3>Modernización</h3>
-          <p>Migración de aplicaciones, mejoras de performance, actualización tecnológica y reducción de deuda técnica.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills" class="container">
-      <div class="split">
-        <div class="section-title">
-          <h2>Skills técnicos</h2>
+    <section id="clientes" class="section alt">
+      <div class="container">
+        <div class="section-heading center">
+          <span class="eyebrow">Confianza que construye</span>
+          <h2>Estos son algunos de nuestros clientes</h2>
           <p>
-            Trabajo combinando desarrollo, infraestructura e integración para entregar soluciones completas.
+            Acompañamos a empresas y organizaciones en el desarrollo de productos digitales,
+            plataformas, integraciones e infraestructura tecnológica.
           </p>
         </div>
 
-        <div class="skills">
-          <span class="skill">Node.js</span>
-          <span class="skill">TypeScript</span>
-          <span class="skill">Express</span>
-          <span class="skill">React</span>
-          <span class="skill">Next.js</span>
-          <span class="skill">Vue.js</span>
-          <span class="skill">AWS</span>
-          <span class="skill">Docker</span>
-          <span class="skill">GitHub Actions</span>
-          <span class="skill">S3</span>
-          <span class="skill">SQS</span>
-          <span class="skill">SES</span>
-          <span class="skill">Redis</span>
-          <span class="skill">MySQL</span>
-          <span class="skill">PostgreSQL</span>
-          <span class="skill">MongoDB</span>
-          <span class="skill">NGINX</span>
-          <span class="skill">Port.io</span>
-          <span class="skill">n8n</span>
-          <span class="skill">Webhooks</span>
+        <div class="clients-grid">
+          <article class="card client-card">
+            <div>
+              <div class="client-logo">GREYKODA</div>
+              <p>Desarrollo de plataformas web y soluciones digitales a medida.</p>
+            </div>
+            <div class="client-tags">
+              <span class="tag">Web</span>
+              <span class="tag">Backend</span>
+              <span class="tag">Integraciones</span>
+            </div>
+          </article>
+
+          <article class="card client-card">
+            <div>
+              <div class="client-logo">RIVER INMERSIVO</div>
+              <p>Plataforma de experiencias inmersivas para eventos de gran escala.</p>
+            </div>
+            <div class="client-tags">
+              <span class="tag">Node.js</span>
+              <span class="tag">React</span>
+              <span class="tag">AWS</span>
+            </div>
+          </article>
+
+          <article class="card client-card">
+            <div>
+              <div class="client-logo">AGSUS</div>
+              <p>Sistema de monitoreo, evaluación visual y gestión de información del suelo.</p>
+            </div>
+            <div class="client-tags">
+              <span class="tag">Go</span>
+              <span class="tag">PWA</span>
+              <span class="tag">Offline First</span>
+            </div>
+          </article>
         </div>
       </div>
     </section>
 
-    <section id="experiencia" class="container">
-      <div class="section-title">
-        <h2>Experiencia destacada</h2>
-        <p>
-          Algunos tipos de proyectos y soluciones en los que vengo trabajando.
-        </p>
-      </div>
+    <section id="servicios" class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Qué hacemos</span>
+          <h2>Soluciones digitales de punta a punta</h2>
+          <p>
+            Desde la definición técnica hasta la puesta en producción, construimos soluciones
+            con foco en calidad, escalabilidad, mantenimiento y valor de negocio.
+          </p>
+        </div>
 
-      <div class="project">
-        <h3>Plataformas internas y APIs empresariales</h3>
-        <p>
-          Desarrollo de servicios backend, herramientas internas, sistemas de permisos,
-          APIs de integración y aplicaciones utilizadas por equipos técnicos y operativos.
-        </p>
-      </div>
+        <div class="grid-3">
+          <article class="card service-card">
+            <div class="icon-box">01</div>
+            <h3>Software a medida</h3>
+            <p>Plataformas web, aplicaciones internas, backoffices y productos digitales completos.</p>
+          </article>
 
-      <div class="project">
-        <h3>Automatización de procesos técnicos</h3>
-        <p>
-          Implementación de flujos para seguimiento de estándares, campañas técnicas,
-          scorecards, alertas, reportes e integración con herramientas como Port.io y Google Sheets.
-        </p>
-      </div>
+          <article class="card service-card">
+            <div class="icon-box">02</div>
+            <h3>Backend & APIs</h3>
+            <p>Servicios robustos, integraciones, autenticación, procesamiento asincrónico y arquitectura.</p>
+          </article>
 
-      <div class="project">
-        <h3>Infraestructura cloud y despliegues</h3>
-        <p>
-          Armado de ambientes productivos con AWS, Docker, GitHub Actions, CloudFront,
-          S3, SQS, Redis, NGINX, dominios y certificados.
-        </p>
-      </div>
+          <article class="card service-card">
+            <div class="icon-box">03</div>
+            <h3>Automatización e IA</h3>
+            <p>Automatizaciones, asistentes y bots para optimizar atención, ventas y procesos internos.</p>
+          </article>
 
-      <div class="project">
-        <h3>Aplicaciones fullstack</h3>
-        <p>
-          Construcción de productos web completos: frontend, backend, base de datos,
-          autenticación, almacenamiento de archivos, integraciones y puesta en producción.
-        </p>
-      </div>
-    </section>
+          <article class="card service-card">
+            <div class="icon-box">04</div>
+            <h3>Cloud & DevOps</h3>
+            <p>Infraestructura, Docker, pipelines CI/CD, monitoreo, seguridad y despliegues productivos.</p>
+          </article>
 
-    <section id="contacto" class="container">
-      <div class="cta">
-        <h2>¿Querés construir o mejorar una solución digital?</h2>
-        <p>
-          Puedo ayudarte a definir la arquitectura, desarrollar el producto,
-          automatizar procesos o llevar tu aplicación a producción.
-        </p>
+          <article class="card service-card">
+            <div class="icon-box">05</div>
+            <h3>Integraciones</h3>
+            <p>WhatsApp, Telegram, Instagram, email, CRM, calendarios, pagos, ERPs y servicios externos.</p>
+          </article>
 
-        <div class="actions" style="justify-content:center;">
-          <a class="btn btn-primary" href="mailto:hughesmatias@gmail.com">Enviar email</a>
-          <a class="btn btn-secondary" href="#">LinkedIn</a>
+          <article class="card service-card">
+            <div class="icon-box">06</div>
+            <h3>Modernización</h3>
+            <p>Migraciones, mejoras de performance, reducción de deuda técnica y evolución de productos existentes.</p>
+          </article>
         </div>
       </div>
     </section>
 
+    <section id="automatizacion" class="section alt">
+      <div class="container">
+        <div class="section-heading center">
+          <span class="eyebrow">AI Automation</span>
+          <h2>Automatizamos conversaciones y operaciones</h2>
+          <p>
+            Creamos agentes inteligentes que entienden consultas, acceden a información
+            del negocio y ejecutan acciones reales en tus sistemas.
+          </p>
+        </div>
+
+        <div class="ai-layout">
+          <div class="ai-main">
+            <span class="eyebrow">Agentes inteligentes</span>
+            <h3>Atención automática, conectada con tu operación.</h3>
+            <p>
+              Los bots pueden responder, consultar datos, registrar información,
+              generar presupuestos, coordinar turnos y derivar a una persona cuando sea necesario.
+            </p>
+
+            <div class="ai-capabilities">
+              <div class="capability">Atención al cliente</div>
+              <div class="capability">Calificación de leads</div>
+              <div class="capability">Venta asistida</div>
+              <div class="capability">Agenda de turnos</div>
+              <div class="capability">Consulta de stock</div>
+              <div class="capability">Generación de presupuestos</div>
+              <div class="capability">Seguimiento automático</div>
+              <div class="capability">Derivación a operadores</div>
+            </div>
+          </div>
+
+          <div class="integration-map">
+            <div class="integration-card">
+              <div class="mini-icon">WA</div>
+              <div>
+                <strong>WhatsApp Business</strong>
+                <span>Bots comerciales, soporte, catálogo, reservas y seguimiento.</span>
+              </div>
+            </div>
+
+            <div class="integration-card">
+              <div class="mini-icon">TG</div>
+              <div>
+                <strong>Telegram</strong>
+                <span>Automatizaciones, alertas internas, consultas y flujos de operación.</span>
+              </div>
+            </div>
+
+            <div class="integration-card">
+              <div class="mini-icon">IG</div>
+              <div>
+                <strong>Instagram</strong>
+                <span>Respuestas automáticas, captación de leads y derivación comercial.</span>
+              </div>
+            </div>
+
+            <div class="integration-card">
+              <div class="mini-icon">API</div>
+              <div>
+                <strong>Sistemas y datos</strong>
+                <span>CRM, calendarios, ERPs, bases SQL, email, APIs y webhooks.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="casos" class="section">
+      <div class="container">
+        <div class="section-heading center">
+          <span class="eyebrow">Casos de éxito</span>
+          <h2>Case Studies</h2>
+          <p>
+            Proyectos reales explicados desde el problema, la solución técnica y el impacto logrado.
+          </p>
+        </div>
+
+        <div class="case-grid">
+          <article class="card case-card">
+            <div class="case-image event"></div>
+            <div class="case-body">
+              <h3>River Inmersivo</h3>
+              <p>Plataforma para operar experiencias inmersivas en eventos y administrar contenido digital.</p>
+              <a class="case-link" href="#">Ver caso de estudio →</a>
+            </div>
+          </article>
+
+          <article class="card case-card">
+            <div class="case-image agro"></div>
+            <div class="case-body">
+              <h3>AGSUS</h3>
+              <p>Sistema de monitoreo del suelo con aplicación web, PWA offline y gestión de evaluaciones.</p>
+              <a class="case-link" href="#">Ver caso de estudio →</a>
+            </div>
+          </article>
+
+          <article class="card case-card">
+            <div class="case-image ai"></div>
+            <div class="case-body">
+              <h3>Automatización de canales</h3>
+              <p>Integraciones y bots conectados a WhatsApp y sistemas internos para atención y operación.</p>
+              <a class="case-link" href="#">Ver caso de estudio →</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="tecnologias" class="section alt">
+      <div class="container">
+        <div class="section-heading center">
+          <span class="eyebrow">Stack tecnológico</span>
+          <h2>Tecnologías y herramientas</h2>
+          <p>
+            Combinamos tecnologías modernas para construir soluciones mantenibles,
+            integrables y preparadas para crecer.
+          </p>
+        </div>
+
+        <div class="tech-groups">
+          <article class="card tech-group">
+            <h3>Backend</h3>
+            <div class="tech-list">
+              <span class="tag">Node.js</span>
+              <span class="tag">TypeScript</span>
+              <span class="tag">Go</span>
+              <span class="tag">Express</span>
+              <span class="tag">REST APIs</span>
+              <span class="tag">Webhooks</span>
+            </div>
+          </article>
+
+          <article class="card tech-group">
+            <h3>Frontend & Mobile</h3>
+            <div class="tech-list">
+              <span class="tag">React</span>
+              <span class="tag">Next.js</span>
+              <span class="tag">React Native</span>
+              <span class="tag">Expo</span>
+              <span class="tag">PWA</span>
+              <span class="tag">Material UI</span>
+            </div>
+          </article>
+
+          <article class="card tech-group">
+            <h3>IA & Automatización</h3>
+            <div class="tech-list">
+              <span class="tag">OpenAI</span>
+              <span class="tag">Claude</span>
+              <span class="tag">Gemini</span>
+              <span class="tag">Ollama</span>
+              <span class="tag">LangChain</span>
+              <span class="tag">n8n</span>
+            </div>
+          </article>
+
+          <article class="card tech-group">
+            <h3>Mensajería & Canales</h3>
+            <div class="tech-list">
+              <span class="tag">WhatsApp</span>
+              <span class="tag">Telegram</span>
+              <span class="tag">Instagram</span>
+              <span class="tag">Evolution API</span>
+              <span class="tag">Chatwoot</span>
+              <span class="tag">Email</span>
+            </div>
+          </article>
+
+          <article class="card tech-group">
+            <h3>Cloud & DevOps</h3>
+            <div class="tech-list">
+              <span class="tag">AWS</span>
+              <span class="tag">Docker</span>
+              <span class="tag">GitHub Actions</span>
+              <span class="tag">NGINX</span>
+              <span class="tag">Cloudflare</span>
+              <span class="tag">Easypanel</span>
+            </div>
+          </article>
+
+          <article class="card tech-group">
+            <h3>Datos & Observabilidad</h3>
+            <div class="tech-list">
+              <span class="tag">PostgreSQL</span>
+              <span class="tag">MySQL</span>
+              <span class="tag">MongoDB</span>
+              <span class="tag">Redis</span>
+              <span class="tag">MinIO</span>
+              <span class="tag">OpenTelemetry</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section">
+      <div class="container">
+        <div class="section-heading">
+          <span class="eyebrow">Cómo trabajamos</span>
+          <h2>Un proceso simple, técnico y orientado a resultados</h2>
+        </div>
+
+        <div class="process">
+          <article class="card process-step">
+            <h3>Descubrimiento</h3>
+            <p>Analizamos el problema, el negocio, los usuarios y las restricciones.</p>
+          </article>
+
+          <article class="card process-step">
+            <h3>Diseño</h3>
+            <p>Definimos arquitectura, experiencia, integraciones y alcance inicial.</p>
+          </article>
+
+          <article class="card process-step">
+            <h3>Desarrollo</h3>
+            <p>Construimos, integramos, probamos y desplegamos de forma iterativa.</p>
+          </article>
+
+          <article class="card process-step">
+            <h3>Evolución</h3>
+            <p>Medimos resultados y mejoramos la solución según el uso real.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacto" class="section">
+      <div class="container">
+        <div class="cta">
+          <div>
+            <span class="eyebrow">Trabajemos juntos</span>
+            <h2>¿Tenés un proyecto, proceso o canal para automatizar?</h2>
+            <p>
+              Podemos ayudarte a convertir una idea en una solución real, desde la arquitectura
+              hasta el desarrollo, la automatización y la puesta en producción.
+            </p>
+          </div>
+
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="mailto:hughesmatias@gmail.com">Enviar email</a>
+            <a class="btn btn-secondary" href="#">WhatsApp</a>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
-    © 2026 Matías Hughes · Technology Consultant
-  </footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div>
+          <a href="#inicio" class="brand">
+            <div class="brand-mark">MH</div>
+            <div>Matías <span>Hughes</span></div>
+          </a>
+          <p style="margin-top:16px; max-width:420px;">
+            Software engineering, productos digitales, automatización e infraestructura
+            para empresas que necesitan soluciones tecnológicas sólidas.
+          </p>
+        </div>
 
+        <div class="footer-links">
+          <strong style="color:white;">Navegación</strong>
+          <a href="#clientes">Clientes</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#casos">Case Studies</a>
+          <a href="#tecnologias">Tecnologías</a>
+        </div>
+
+        <div class="footer-links">
+          <strong style="color:white;">Contacto</strong>
+          <a href="mailto:hughesmatias@gmail.com">hughesmatias@gmail.com</a>
+          <a href="#">LinkedIn</a>
+          <a href="#">GitHub</a>
+          <span>Buenos Aires, Argentina</span>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <span>© 2026 Matías Hughes. Todos los derechos reservados.</span>
+        <span>Software · Cloud · Automation · Digital Products</span>
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
